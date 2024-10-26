@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main">
+<form class="calc_form delete-form" method="post">
+    {% csrf_token %}
+    <p class="delete_p">Are you sure you want to delete {{ project.project_name }} ?</p>
+    <div class="submit-cancel"><input class="anchor-btn" type="submit" value="Yes">
+        <a class="anchor-btn" href="{% url 'project_list' %}">Cancel</a></div>
+    
+</form>
+</div>
+{% endblock content %}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main">
+<nav class="nav">
+    <h2>Welcome {{ user.username }}</h2>
+    <a class="anchor-btn" href="{% url 'project_list' %}">View Past Estimates</a>
+
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+    
+        <input type="submit" value="Logout">
+    </form>
+    
+</nav>
+
+<div class="calculator">
+    <h2>Project Cost Estimation</h2>
+
+<form class="calc_form" method = "POST">
+    {% csrf_token %}
+
+    <label for="project_name">Project Name </label>
+    <input class="form" type="text" name="project_name" id="project_name"> <br>
+
+    <label for="time_of_completion">Time of completion </label>
+    <select class="form" name="time_of_completion" id="time_of_completion">
+        <option value="1">1 Month </option>
+        <option value="2">2 Months </option>
+        <option value="3">3 Months </option>
+        <option value="4">4 Months </option>
+        <option value="5">5 Months </option>
+        <option value="6">6 Months </option>
+    </select> <br>
+
+    <label for="include_hosting"> Include Hosting </label>
+    <input class="checkbox" type="checkbox" id="include_hosting" name="include_hosting"> <br>
+
+
+    <label for="project_use">Project Use </label>
+    <select class="form" name="project_use" id="project_use">
+        <option value="personal">Personal Use</option>
+        <option value="business">Business Use</option>
+        <option value="Enterprise">Enterprise Use</option>
+        <option value="non-profit">Non-profit</option>
+    </select> <br>
+
+    <label for="require_it_maintenance">Requires IT Maintenance</label>
+    <input class="checkbox" type="checkbox" id="require_it_maintenance" name="require_it_maintenance"> <br>
+
+    <button class="form-btn" type="submit">Calculate Cost</button>
+</form>
+
+{% if estimated_cost %}
+<h2>Estimated Cost: $ {{ estimated_cost}} </h2>
+{% endif %}
+
+</div>
+</div>
+{% endblock content %}

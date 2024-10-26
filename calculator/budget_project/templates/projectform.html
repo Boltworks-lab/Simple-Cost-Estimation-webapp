@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main">
+<div class="nav"><h2>{% if form.instance.pk %}Edit Project {% else %} Add Project {% endif %}</h2>
+  {% if project %}  <a class="anchor-btn" href="{% url 'project_details' project.pk %}">Cancel</a> {% else %} <a class="anchor-btn" href="{% url 'project_list' %}">Cancel</a> {% endif %}
+ </div>
+<form class="calc_form" action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <button class="form-btn" type="submit">Save</button>
+    
+</form>
+</div>
+{% endblock content %}

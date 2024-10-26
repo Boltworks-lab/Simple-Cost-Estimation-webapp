@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main">
+    <nav>
+        <a class="anchor-btn" href="{% url 'project_list' %}">Back to list</a>
+        <a class="anchor-btn" href="{% url 'project_edit' project.pk %}">Edit Requirements</a>
+        <a class="anchor-btn" href="{% url 'delete' project.pk %}">Delete</a>
+    </nav>
+<h2>{{ project.project_name }}</h2>
+<div class="details">
+<h4 class="parameters">Parameters</h4>
+<ul class="main-details">
+    <li class="list link">Time of Completion: {{ project.time_of_completion }} months</li>
+    <li class="list link">Will it require hosting?: {{ project.require_hosting }}</li>
+    <li class="list link">What will it be used for? {{ project.project_use }}</li>
+    <li class="list link">Will it require I.T maintenance?: {{ project.require_it_maintenance }}</li>
+</ul>
+<hr>
+<h3>Your Cost Estimate is: $ {{ estimated_cost }}</h3>
+
+</div>
+</div>
+{% endblock content %}

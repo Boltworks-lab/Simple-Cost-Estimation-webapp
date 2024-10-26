@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main">
+<h2>Login to Your Account</h2>
+<form class="calc_form form-height" action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="submit-cancel">
+        <input class="anchor-btn" type="submit" value="Login">
+    <a class="anchor-btn" href="{% url 'signup' %}">Sign up</a>
+    </div>
+    
+</form>
+    
+</div>
+{% endblock content %}
